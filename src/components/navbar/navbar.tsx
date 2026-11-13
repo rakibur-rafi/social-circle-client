@@ -23,6 +23,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { redirect } from "next/navigation";
 
 const navLinks = [
   { label: "Upcoming Events", href: "/events" },
@@ -94,6 +95,7 @@ export function Navbar() {
 
     toast.success("Logged out successfully!");
     setOpen(false);
+    redirect("/");
   };
 
   return (
