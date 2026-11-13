@@ -75,7 +75,6 @@ export default async function EventsPage() {
               key={event._id}
               id={event._id}
               title={event.title}
-              description={event.description}
               thumbnailUrl={event.thumbnailUrl}
               location={event.location}
               host={event.name}

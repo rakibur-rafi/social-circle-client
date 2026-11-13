@@ -90,7 +90,7 @@ export function CreateEventForm() {
         <label htmlFor="title" className="text-sm font-medium">
           Title
         </label>
-        <Input id="title" name="title" type="text" placeholder="Community Park Cleanup" required />
+        <Input id="title" name="title" type="text" placeholder="Local Field Cleanup" required />
       </div>
 
       <div className="space-y-1.5">
@@ -146,7 +146,7 @@ export function CreateEventForm() {
           <label htmlFor="location" className="text-sm font-medium">
             Location
           </label>
-          <Input id="location" name="location" type="text" placeholder="Central Park, NY" required />
+          <Input id="location" name="location" type="text" placeholder="Halishahar, Chittagong" required />
         </div>
 
         <div className="space-y-1.5">

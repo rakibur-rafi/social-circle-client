@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, MapPin } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { JoinEvent } from "@/components/events/join-event";
 
 const eventTypes: Record<string, string> = {
   cleanup: "Cleanup",
@@ -25,6 +26,15 @@ type Event = {
   eventDate: string;
 };
 
+type Join = {
+  _id: string;
+  eventId: string;
+  name: string;
+  email: string;
+  image: string;
+  joinedAt?: string;
+};
+
 async function getEvents(): Promise<Event[]> {
   try {
     const res = await fetch("http://localhost:5000/events", {
@@ -33,6 +43,21 @@ async function getEvents(): Promise<Event[]> {
     if (!res.ok) return [];
     const events = await res.json();
     return Array.isArray(events) ? (events as Event[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+async function getJoins(eventId: string): Promise<Join[]> {
+  try {
+    const res = await fetch("http://localhost:5000/joined-events", {
+      cache: "no-store",
+    });
+    if (!res.ok) return [];
+    const joins = await res.json();
+    return Array.isArray(joins)
+      ? (joins as Join[]).filter((join) => join.eventId === eventId)
+      : [];
   } catch {
     return [];
   }
@@ -60,6 +85,8 @@ export default async function EventPage({
   const event = (await getEvents()).find((event) => event._id === id);
 
   if (!event) notFound();
+
+  const joins = await getJoins(event._id);
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
@@ -141,6 +168,8 @@ export default async function EventPage({
               {event.description}
             </p>
           </div>
+
+          <JoinEvent eventId={event._id} initialJoins={joins} />
         </div>
       </div>
     </section>

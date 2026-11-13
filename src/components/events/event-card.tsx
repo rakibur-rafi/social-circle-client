@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 type EventCardProps = {
   id: string;
   title: string;
-  description: string;
   thumbnailUrl: string;
   location: string;
   host: string;
@@ -17,7 +16,6 @@ type EventCardProps = {
 export function EventCard({
   id,
   title,
-  description,
   thumbnailUrl,
   location,
   host,
