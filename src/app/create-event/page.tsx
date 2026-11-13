@@ -1,8 +1,5 @@
 import { CreateEventForm } from "@/components/create-event/create-event-form";
 
-export const metadata = {
-  title: "Create Event · Social Circle",
-};
 
 export default function CreateEventPage() {
   return (

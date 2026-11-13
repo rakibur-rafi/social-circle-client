@@ -63,7 +63,7 @@ export default async function EventsPage() {
           Upcoming Events
         </h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          A clean list of what&apos;s happening soon — pick an event, pitch in,
+          A clean list of what&apos;s happening soon - pick an event, pitch in,
           and grow your social circle.
         </p>
       </div>

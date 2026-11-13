@@ -60,10 +60,6 @@ export function EventCard({
           </p>
         </div>
 
-        <p className="mt-3 line-clamp-2 text-sm text-muted-foreground">
-          {description}
-        </p>
-
         <Button
           className="mt-5 w-full"
           nativeButton={false}
