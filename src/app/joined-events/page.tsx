@@ -72,8 +72,7 @@ export default async function JoinedEventsPage() {
           Joined Events
         </h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          The events you&apos;ve signed up for as a volunteer — cancel anytime
-          if your plans change.
+          The events you&apos;ve signed up for as a volunteer
         </p>
       </div>
 
