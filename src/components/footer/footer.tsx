@@ -3,8 +3,14 @@ import type { SVGProps } from "react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo/logo";
 
-const footerLinks = [
+const exploreLinks = [
   { label: "Upcoming Events", href: "/events" },
+  { label: "Create Event", href: "/create-event" },
+  { label: "Joined Events", href: "/joined-events" },
+];
+
+const accountLinks = [
+  { label: "Profile", href: "/profile" },
   { label: "Become a Volunteer", href: "/signup" },
   { label: "Login", href: "/login" },
 ];
@@ -51,42 +57,79 @@ const socialLinks = [
   { label: "YouTube", href: "https://youtube.com", Icon: YoutubeIcon },
 ];
 
-export function Footer() {
+function FooterNav({
+  title,
+  links,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+}) {
   return (
-    <footer className="bg-background">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between">
-        <Link href="/" className="flex items-center gap-2 text-foreground">
-          <Logo className="size-5" />
-          <span className="text-base font-semibold tracking-tight">Social Circle</span>
-        </Link>
-
-        <nav className="flex flex-wrap gap-6 text-sm text-muted-foreground">
-          {footerLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-foreground">
+    <nav aria-label={title}>
+      <h3 className="text-sm font-semibold tracking-tight">{title}</h3>
+      <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href} className="hover:text-foreground">
               {link.label}
             </Link>
-          ))}
-        </nav>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
 
-        <div className="flex items-center gap-4">
-          {socialLinks.map(({ label, href, Icon }) => (
-            <Button
-              key={label}
-              variant="ghost"
-              size="icon-sm"
-              className="text-muted-foreground hover:text-foreground"
-              nativeButton={false}
-              render={<a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} />}
-            >
-              <Icon className="size-4" />
-            </Button>
-          ))}
+export function Footer() {
+  return (
+    <footer className="border-t bg-card">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <div className="sm:col-span-2">
+            <Link href="/" className="flex items-center gap-2 text-foreground">
+              <Logo className="size-5" />
+              <span className="text-base font-semibold tracking-tight">
+                Social Circle
+              </span>
+            </Link>
+            <p className="mt-3 max-w-sm text-sm text-muted-foreground">
+              Social Circle brings neighbors together through local volunteer
+              events — lend a hand, meet like-minded people, and turn small
+              acts into lasting impact.
+            </p>
+            <div className="mt-5 flex items-center gap-2">
+              {socialLinks.map(({ label, href, Icon }) => (
+                <Button
+                  key={label}
+                  variant="outline"
+                  size="icon-sm"
+                  className="rounded-full text-muted-foreground hover:text-foreground"
+                  nativeButton={false}
+                  render={
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                    />
+                  }
+                >
+                  <Icon className="size-4" />
+                </Button>
+              ))}
+            </div>
+          </div>
+
+          <FooterNav title="Explore" links={exploreLinks} />
+          <FooterNav title="Account" links={accountLinks} />
         </div>
       </div>
+
       <div className="border-t border-border">
-        <p className="mx-auto max-w-7xl px-4 py-4 text-xs text-muted-foreground sm:px-6">
-          © {new Date().getFullYear()} Social Circle. All rights reserved.
-        </p>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-4 text-xs text-muted-foreground sm:flex-row sm:px-6">
+          <p>© {new Date().getFullYear()} Social Circle. All rights reserved.</p>
+          <p>Built for community volunteers, by community volunteers.</p>
+        </div>
       </div>
     </footer>
   );

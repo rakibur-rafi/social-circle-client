@@ -3,7 +3,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, User } from "lucide-react";
+import {
+  Menu,
+  X,
+  User,
+  UserRound,
+  CalendarPlus,
+  SquarePen,
+  HeartHandshake,
+  LogOut,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo/logo";
 import { ModeToggle } from "../toggler";
@@ -54,24 +63,30 @@ function UserDropdown({ user, handleLogout }: UserDropdownProps) {
       />
 
       <DropdownMenuContent align="end" className="w-48">
+        <DropdownMenuItem render={<Link href="/profile" />}>
+          <UserRound />
+          Profile
+        </DropdownMenuItem>
+
         <DropdownMenuItem render={<Link href="/create-event" />}>
+          <CalendarPlus />
           Create Event
         </DropdownMenuItem>
 
         <DropdownMenuItem render={<Link href="/manage-events" />}>
+          <SquarePen />
           Manage Events
         </DropdownMenuItem>
 
         <DropdownMenuItem render={<Link href="/joined-events" />}>
+          <HeartHandshake />
           Joined Events
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem
-          onClick={handleLogout}
-          className="text-destructive focus:text-destructive"
-        >
+        <DropdownMenuItem onClick={handleLogout} variant="destructive">
+          <LogOut />
           Logout
         </DropdownMenuItem>
       </DropdownMenuContent>
