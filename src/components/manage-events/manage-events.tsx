@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/dialog";
 import { authClient } from "@/lib/auth-client";
 import { API_URL } from "@/lib/api";
+import { EventGridSkeleton } from "@/components/events/event-card-skeleton";
 
 const eventTypes: Record<string, string> = {
   cleanup: "Cleanup",
@@ -383,9 +384,9 @@ export function ManageEvents() {
 
   if (events === null) {
     return (
-      <p className="mt-10 text-center text-sm text-muted-foreground">
-        Loading your events...
-      </p>
+      <div className="mt-10">
+        <EventGridSkeleton count={4} />
+      </div>
     );
   }
 

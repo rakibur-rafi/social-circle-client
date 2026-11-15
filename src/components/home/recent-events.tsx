@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { EventCard } from "@/components/events/event-card";
+import { EventGridSkeleton } from "@/components/events/event-card-skeleton";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { API_URL } from "@/lib/api";
 
 const eventTypes: Record<string, string> = {
@@ -62,6 +64,21 @@ async function getRecentUpcomingEvents(): Promise<Event[]> {
     .filter((event) => isUpcoming(event.eventDate))
     .sort((a, b) => a.eventDate.localeCompare(b.eventDate))
     .slice(0, 6);
+}
+
+export function RecentEventsSkeleton() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-2xl space-y-3 text-center">
+        <Skeleton className="mx-auto h-9 w-72" />
+        <Skeleton className="mx-auto h-4 max-w-md" />
+      </div>
+
+      <div className="mt-10">
+        <EventGridSkeleton />
+      </div>
+    </section>
+  );
 }
 
 export async function RecentEvents() {

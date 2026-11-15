@@ -1,7 +1,11 @@
+import { Suspense } from "react";
 import { Hero } from "@/components/home/hero";
 import { Stats } from "@/components/home/stats";
 import { Features } from "@/components/home/features";
-import { RecentEvents } from "@/components/home/recent-events";
+import {
+  RecentEvents,
+  RecentEventsSkeleton,
+} from "@/components/home/recent-events";
 import { Gallery } from "@/components/home/gallery";
 import { Newsletter } from "@/components/home/newsletter";
 
@@ -10,7 +14,9 @@ export default function HomePage() {
     <>
       <Hero />
       <Stats />
-      <RecentEvents />
+      <Suspense fallback={<RecentEventsSkeleton />}>
+        <RecentEvents />
+      </Suspense>
       <Features />
       <Gallery />
       <Newsletter />
