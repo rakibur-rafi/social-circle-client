@@ -17,12 +17,11 @@ export function Gallery() {
           Gallery
         </h2>
         <p className="mt-3 text-sm text-muted-foreground">
-          Moments from our community service events — the people, the places,
-          and the impact we create together.
+          Moments from our community service events.
         </p>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+      <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
         {galleryItems.map(({ caption, position }) => (
           <figure
             key={caption}

@@ -15,7 +15,7 @@ export function Newsletter() {
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm text-secondary-foreground/80">
           Get upcoming community events and volunteer opportunities delivered
-          straight to your inbox. No spam — unsubscribe anytime.
+          straight to your inbox.
         </p>
 
         <div className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">

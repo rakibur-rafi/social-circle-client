@@ -76,7 +76,7 @@ export async function RecentEvents() {
           Recent Upcoming Events
         </h2>
         <p className="mt-3 text-sm text-muted-foreground">
-          Six of the next events happening in your community — grab a spot
+          Next events happening in your community - grab a spot
           before they fill up.
         </p>
       </div>

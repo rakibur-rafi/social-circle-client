@@ -32,7 +32,7 @@ export function Features() {
         </h2>
         <p className="mt-3 text-sm text-muted-foreground">
           Everything you need to discover local events, pitch in, and connect
-          with your community — no friction, no clutter.
+          with your community.
         </p>
       </div>
 

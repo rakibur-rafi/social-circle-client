@@ -37,15 +37,16 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className="w-full max-w-sm space-y-3 flex justify-end">
+          <div className="w-full max-w-sm space-y-3 hidden sm:flex justify-end">
             <div className="rounded-2xl bg-card p-5 text-card-foreground shadow-lg md:w-72">
-              <p className="text-3xl font-semibold tracking-tight">Be a Volunteer</p>
+              <p className="text-2xl font-semibold tracking-tight">Be a Volunteer</p>
               <div className="mt-3 h-1.5 rounded-full bg-muted">
                 <div className="h-full w-2/3 rounded-full bg-primary" />
               </div>
               <div className="mt-2 flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">1000+ Joined</span>
-now               </div>
+                  now               
+                </div>
             </div>
 
           

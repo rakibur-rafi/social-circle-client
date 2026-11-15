@@ -191,25 +191,15 @@ export function Navbar() {
               (user ? (
                 <div className="mt-2 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Avatar>
-                      <AvatarImage
-                        src={user.image || ""}
-                        alt={user.name || "User"}
-                      />
-                      <AvatarFallback>
-                        {user.name?.charAt(0).toUpperCase() || (
-                          <User size={18} />
-                        )}
-                      </AvatarFallback>
-                    </Avatar>
+                    <UserDropdown
+                    user={user}
+                    handleLogout={handleLogout}
+                  />
 
                     <span className="text-sm font-medium">{user.name}</span>
                   </div>
 
-                  <UserDropdown
-                    user={user}
-                    handleLogout={handleLogout}
-                  />
+                  
                 </div>
               ) : (
                 <div className="mt-2 flex gap-2">
