@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 const galleryItems = [
-  { caption: "Riverfront Cleanup", position: "object-[12%_20%]" },
-  { caption: "Community Meetup", position: "object-[38%_28%]" },
-  { caption: "Volunteer Day", position: "object-[62%_32%]" },
-  { caption: "Neighbors Helping Neighbors", position: "object-[88%_45%]" },
-  { caption: "Youth Outreach", position: "object-[25%_65%]" },
-  { caption: "Together for the Neighborhood", position: "object-center" },
+  { caption: "Free Food for the Hungry", position: "object-[12%_20%]", image :"/images/newsletter1.jpg" },
+  { caption: "Connecting People", position: "object-[38%_28%]", image :"/images/newsletter2.jpg"},
+  { caption: "Winter Food Distribution", position: "object-[62%_32%]", image :"/images/newsletter3.jpg" },
+  { caption: "Tree Planting", position: "object-[88%_45%]", image :"/images/newsletter4.jpg" },
+  { caption: "Smiles We Share", position: "object-[25%_65%]", image :"/images/newsletter5.jpg" },
+  { caption: "Free Clothing for the Homeless", position: "object-center", image :"/images/newsletter6.jpg" },
 ];
 
 export function Gallery() {
@@ -22,13 +22,13 @@ export function Gallery() {
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-        {galleryItems.map(({ caption, position }) => (
+        {galleryItems.map(({ caption, position, image }) => (
           <figure
             key={caption}
             className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border"
           >
             <Image
-              src="/images/banner.jpg"
+              src={image}
               alt={caption}
               fill
               sizes="(min-width: 768px) 33vw, 50vw"
