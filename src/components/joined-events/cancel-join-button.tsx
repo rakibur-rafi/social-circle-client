@@ -16,7 +16,7 @@ export function CancelJoinButton({
 
   const handleCancel = async () => {
     const res = await fetch(
-      `${API_URL}/joined-events/${encodeURIComponent(email)}/${eventId}`,
+      `${API_URL}/joined-events/${email}/${eventId}`,
       {
         method: "DELETE",
       },

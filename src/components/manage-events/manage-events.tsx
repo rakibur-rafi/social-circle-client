@@ -87,11 +87,14 @@ function ManageEventForm({
       toast.error("Please select an event type.");
       return;
     }
+    const {data,error} = await authClient.token()
+    const token = data?.token;
 
     const res = await fetch(`${API_URL}/events/${event._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ ...updated, eventType }),
     });

@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UpdateNameDialog } from "@/components/profile/update-name-dialog";
+import { UpdateProfileDialog } from "@/components/profile/update-profile-dialog";
 
 export const metadata = {
   title: "Profile · Social Circle",
@@ -27,7 +27,7 @@ export default async function ProfilePage() {
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">{user.email}</p>
 
-        <UpdateNameDialog name={user.name ?? ""} />
+        <UpdateProfileDialog name={user.name ?? ""} image={user.image ?? ""} />
       </div>
     </section>
   );

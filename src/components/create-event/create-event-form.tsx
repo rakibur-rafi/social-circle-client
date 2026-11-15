@@ -34,14 +34,18 @@ function setMinToTomorrow(element: HTMLInputElement | null) {
   element.min = `${tomorrow.getFullYear()}-${pad(tomorrow.getMonth() + 1)}-${pad(tomorrow.getDate())}`;
 }
 
-export function CreateEventForm() {
+export function  CreateEventForm() {
   const [eventType, setEventType] = useState<EventTypeKey | null>(null);
 
   const {data: session} = authClient.useSession();
   const user = session?.user;
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    
     e.preventDefault();
+
+  
     const formData = new FormData(e.currentTarget);
     const event = Object.fromEntries(formData.entries()) as {
       title: string;
@@ -56,19 +60,23 @@ export function CreateEventForm() {
       return;
     }
     
-    const data= {
+    const resData= {
       name: user?.name,
       email: user?.email,
       image: user?.image,
       ...event
     }
-    
+
+    const {data,error} = await authClient.token()
+    console.log(data)
+    const token = data?.token;
     const res= await fetch(`${API_URL}/add-event`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(resData),
     })
 
     const eventData= await res.json();

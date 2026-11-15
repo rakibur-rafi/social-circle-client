@@ -18,7 +18,13 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export function UpdateNameDialog({ name }: { name: string }) {
+export function UpdateProfileDialog({
+  name,
+  image,
+}: {
+  name: string;
+  image: string;
+}) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -26,12 +32,16 @@ export function UpdateNameDialog({ name }: { name: string }) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const user = Object.fromEntries(formData);
+    // Skip empty fields so untouched inputs don't overwrite existing values.
+    const updates = Object.fromEntries(
+      Object.entries(user).filter(([, value]) => value !== ""),
+    );
     const updated = await authClient.updateUser({
-      ...user,
+      ...updates,
     });
 
     if (updated.error) {
-      toast.error(updated.error.message || "Failed to update your name.");
+      toast.error(updated.error.message || "Failed to update your profile.");
       return;
     }
 
@@ -44,14 +54,14 @@ export function UpdateNameDialog({ name }: { name: string }) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger render={<Button className="mt-6" />}>
         <UserRoundPen />
-        Update Name
+        Update Profile
       </DialogTrigger>
 
       <DialogContent className="max-w-sm">
         <DialogHeader>
-          <DialogTitle>Update Name</DialogTitle>
+          <DialogTitle>Update Profile</DialogTitle>
           <DialogDescription>
-            Change the display name shown on your profile and events.
+            Change the name and image shown on your profile and events.
           </DialogDescription>
         </DialogHeader>
 
@@ -61,6 +71,19 @@ export function UpdateNameDialog({ name }: { name: string }) {
               Name
             </label>
             <Input id="name" name="name" defaultValue={name} required />
+          </div>
+
+          <div className="space-y-1.5">
+            <label htmlFor="image" className="text-sm font-medium">
+              Image URL
+            </label>
+            <Input
+              id="image"
+              name="image"
+              type="url"
+              placeholder="https://example.com/avatar.png"
+              defaultValue={image}
+            />
           </div>
 
           <DialogFooter>

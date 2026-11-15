@@ -38,7 +38,7 @@ export function JoinEvent({
     if (!user || myJoin || joining) return;
     setJoining(true);
 
-    const data = {
+    const resData = {
       eventId,
       name: user.name,
       email: user.email,
@@ -46,18 +46,23 @@ export function JoinEvent({
       joinedAt: new Date().toISOString(),
     };
 
+    const { data, error } = await authClient.token();
+    const token = data?.token;
+
+
     const res = await fetch(`${API_URL}/joined-events`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(resData),
     });
 
     const result = await res.json();
     if (res.ok) {
       toast.success("You joined this event!");
-      setJoins([...joins, { ...data, _id: result.insertedId }]);
+      setJoins([...joins, { ...resData, _id: result.insertedId }]);
     } else {
       toast.error("Failed to join the event.");
     }
