@@ -189,18 +189,75 @@ export function Navbar() {
 
             {!isPending &&
               (user ? (
-                <div className="mt-2 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <UserDropdown
-                    user={user}
-                    handleLogout={handleLogout}
-                  />
+                <>
+                  <div className="mt-2 flex items-center justify-between">
+                    <Link
+                      href="/profile"
+                      className="flex items-center gap-2"
+                      onClick={() => setOpen(false)}
+                    >
+                      <Avatar>
+                        <AvatarImage
+                          src={user.image || ""}
+                          alt={user.name || "User"}
+                        />
+                        <AvatarFallback>
+                          {user.name?.charAt(0).toUpperCase() || (
+                            <User size={18} />
+                          )}
+                        </AvatarFallback>
+                      </Avatar>
 
-                    <span className="text-sm font-medium">{user.name}</span>
+                      <span className="text-sm font-medium">{user.name}</span>
+                    </Link>
+
+                    <ModeToggle />
                   </div>
 
-                  
-                </div>
+                  <Link
+                    href="/profile"
+                    className="flex items-center gap-2 text-sm font-medium text-foreground"
+                    onClick={() => setOpen(false)}
+                  >
+                    <UserRound size={18} />
+                    Profile
+                  </Link>
+
+                  <Link
+                    href="/create-event"
+                    className="flex items-center gap-2 text-sm font-medium text-foreground"
+                    onClick={() => setOpen(false)}
+                  >
+                    <CalendarPlus size={18} />
+                    Create Event
+                  </Link>
+
+                  <Link
+                    href="/manage-events"
+                    className="flex items-center gap-2 text-sm font-medium text-foreground"
+                    onClick={() => setOpen(false)}
+                  >
+                    <SquarePen size={18} />
+                    Manage Events
+                  </Link>
+
+                  <Link
+                    href="/joined-events"
+                    className="flex items-center gap-2 text-sm font-medium text-foreground"
+                    onClick={() => setOpen(false)}
+                  >
+                    <HeartHandshake size={18} />
+                    Joined Events
+                  </Link>
+
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center gap-2 text-sm font-medium text-destructive"
+                  >
+                    <LogOut size={18} />
+                    Logout
+                  </button>
+                </>
               ) : (
                 <div className="mt-2 flex gap-2">
                   <Button

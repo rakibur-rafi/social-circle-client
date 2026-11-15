@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Social Circle - Community Engagement Platform
 
-## Getting Started
+**Social Circle** is a community engagement platform designed to bring people together through local events, volunteering opportunities, and social initiatives. It allows people to participate in meaningful activities, support their communities, and turn small acts of kindness into lasting impact.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Screenshots
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Home Page
+![Social Circle Home Page](./previews/screenshot1.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Upcoming Events
+![Upcoming Events](./previews/screenshot2.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Detailed Event
+![Create Event](./previews/screenshot3.png)
 
-## Learn More
+### Joined Events
+![Joined Events](./previews/screenshot4.png)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Upcoming Events:** Browse and explore only upcoming community events. Past events are not displayed in the upcoming events section.
+- **Join Events:** Users can join events they are interested in and participate in community activities.
+- **Create Events:** Authenticated users can create and publish their own community events.
+- **Manage Created Events:** Users can view and manage events they have created, including updating event details and deleting events.
+- **Joined Events:** Users can view all the events they have joined in one place.
+- **Secure Authentication:** User authentication and authorization using Better Auth and JWT.
+- **Community Initiatives:** Support various social activities, including food drives, donation campaigns, tree plantations, workshops, and winter clothing distributions.
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Frontend
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+
+### Authentication & Authorization
+- Better Auth
+- JSON Web Token (JWT)
+- MongoDB Adapter
+
+### Deployment
+- Vercel
+
+
+
+## Live Links
+
+- **Live Website:** [Social Circle](https://social-circle-client.vercel.app/)
+- **Client GitHub Repository:** [Source Code](https://github.com/rakibur-rafi/social-circle-client)
+- **Server GitHub Repository:** [Source Code](https://github.com/rakibur-rafi/social-circle-server)
