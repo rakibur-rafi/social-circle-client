@@ -5,6 +5,7 @@ import { ArrowLeft, CalendarDays, MapPin } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { JoinEvent } from "@/components/events/join-event";
+import { API_URL } from "@/lib/api";
 
 const eventTypes: Record<string, string> = {
   cleanup: "Cleanup",
@@ -37,7 +38,7 @@ type Join = {
 
 async function getEvents(): Promise<Event[]> {
   try {
-    const res = await fetch("http://localhost:5000/events", {
+    const res = await fetch(`${API_URL}/events`, {
       cache: "no-store",
     });
     if (!res.ok) return [];
@@ -50,7 +51,7 @@ async function getEvents(): Promise<Event[]> {
 
 async function getJoins(eventId: string): Promise<Join[]> {
   try {
-    const res = await fetch("http://localhost:5000/joined-events", {
+    const res = await fetch(`${API_URL}/joined-events`, {
       cache: "no-store",
     });
     if (!res.ok) return [];

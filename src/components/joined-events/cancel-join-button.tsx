@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
+import { API_URL } from "@/lib/api";
 
 export function CancelJoinButton({
   eventId,
@@ -15,7 +16,7 @@ export function CancelJoinButton({
 
   const handleCancel = async () => {
     const res = await fetch(
-      `http://localhost:5000/joined-events/${encodeURIComponent(email)}/${eventId}`,
+      `${API_URL}/joined-events/${encodeURIComponent(email)}/${eventId}`,
       {
         method: "DELETE",
       },

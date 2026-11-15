@@ -23,6 +23,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { authClient } from "@/lib/auth-client";
+import { API_URL } from "@/lib/api";
 
 const eventTypes: Record<string, string> = {
   cleanup: "Cleanup",
@@ -86,7 +87,7 @@ function ManageEventForm({
       return;
     }
 
-    const res = await fetch(`http://localhost:5000/events/${event._id}`, {
+    const res = await fetch(`${API_URL}/events/${event._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -236,7 +237,7 @@ function ManageEventCard({
       return;
     }
 
-    const res = await fetch(`http://localhost:5000/events/${event._id}`, {
+    const res = await fetch(`${API_URL}/events/${event._id}`, {
       method: "DELETE",
     });
 
@@ -339,7 +340,7 @@ export function ManageEvents() {
     const load = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/events/${user.email}`,
+          `${API_URL}/events/${user.email}`,
         );
         const data = await res.json();
         if (active) setEvents(Array.isArray(data) ? (data as Event[]) : []);

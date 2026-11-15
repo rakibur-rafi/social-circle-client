@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { authClient } from "@/lib/auth-client";
+import { API_URL } from "@/lib/api";
 import { redirect } from "next/navigation";
 
 const eventTypes = {
@@ -62,7 +63,7 @@ export function CreateEventForm() {
       ...event
     }
     
-    const res= await fetch("http://localhost:5000/add-event", {
+    const res= await fetch(`${API_URL}/add-event`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

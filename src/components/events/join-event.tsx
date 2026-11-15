@@ -7,6 +7,7 @@ import { UserPlus } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
+import { API_URL } from "@/lib/api";
 
 type Join = {
   _id: string;
@@ -45,7 +46,7 @@ export function JoinEvent({
       joinedAt: new Date().toISOString(),
     };
 
-    const res = await fetch("http://localhost:5000/joined-events", {
+    const res = await fetch(`${API_URL}/joined-events`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +68,7 @@ export function JoinEvent({
     if (!user) return;
 
     const res = await fetch(
-      `http://localhost:5000/joined-events/${user.email}/${eventId}`,
+      `${API_URL}/joined-events/${user.email}/${eventId}`,
       {
         method: "DELETE",
       },

@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { EventCard } from "@/components/events/event-card";
 import { EventSearch } from "@/components/events/event-search";
 import { Button } from "@/components/ui/button";
+import { API_URL } from "@/lib/api";
 
 const eventTypes: Record<string, string> = {
   cleanup: "Cleanup",
@@ -25,7 +26,7 @@ type Event = {
 
 async function getEvents(): Promise<Event[]> {
   try {
-    const res = await fetch("http://localhost:5000/events");
+    const res = await fetch(`${API_URL}/events`);
     if (!res.ok) return [];
     const events = await res.json();
     return Array.isArray(events) ? (events as Event[]) : [];

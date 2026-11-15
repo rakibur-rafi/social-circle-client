@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, CalendarDays, MapPin } from "lucide-react";
 import { auth } from "@/lib/auth";
+import { API_URL } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { CancelJoinButton } from "@/components/joined-events/cancel-join-button";
 
@@ -48,8 +49,8 @@ export default async function JoinedEventsPage() {
   if (user?.email) {
     try {
       const [joinRes, eventRes] = await Promise.all([
-        fetch(`http://localhost:5000/joined-events/${user.email}`),
-        fetch("http://localhost:5000/events"),
+        fetch(`${API_URL}/joined-events/${user.email}`),
+        fetch(`${API_URL}/events`),
       ]);
       const joinData = await joinRes.json();
       const eventData = await eventRes.json();
