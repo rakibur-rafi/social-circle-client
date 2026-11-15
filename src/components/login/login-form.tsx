@@ -25,6 +25,12 @@ export function LoginForm() {
       toast.error(error.message);
     }
   }
+
+const googleSignIn = async () => {
+  const data = await authClient.signIn.social({
+    provider: "google",
+  });
+};
   return (
     <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
       <div className="space-y-1.5">
@@ -58,7 +64,7 @@ export function LoginForm() {
         <span className="h-px flex-1 bg-border" />
       </div>
 
-      <Button type="button" variant="outline" className="w-full">
+      <Button onClick={googleSignIn} type="button" variant="outline" className="w-full">
         <GoogleIcon className="size-4" />
         Continue with Google
       </Button>

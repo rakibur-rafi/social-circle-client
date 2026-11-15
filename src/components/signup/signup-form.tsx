@@ -44,6 +44,12 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
 }
 
+const googleSignUp = async () => {
+  const data = await authClient.signIn.social({
+    provider: "google",
+  });
+};
+
 export function SignupForm() {
   return (
     <form
@@ -96,7 +102,7 @@ export function SignupForm() {
         <span className="h-px flex-1 bg-border" />
       </div>
 
-      <Button type="button" variant="outline" className="w-full">
+      <Button onClick={googleSignUp} type="button" variant="outline" className="w-full">
         <GoogleIcon className="size-4" />
         Continue with Google
       </Button>
